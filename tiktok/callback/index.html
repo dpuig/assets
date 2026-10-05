@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer"><meta name="robots" content="noindex">
+<title>TikTok authorization – dpuig Publisher</title>
+<style>body{font:16px/1.6 system-ui,sans-serif;max-width:720px;margin:40px auto;padding:0 16px;color:#222}code{display:block;word-break:break-all;background:#f3f3f3;padding:12px;border-radius:6px}</style></head>
+<body>
+<h1>TikTok authorization</h1>
+<div id="out">Waiting for authorization response…</div>
+<script>
+var p=new URLSearchParams(location.search),o=document.getElementById('out');
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+if(p.get('error')){o.innerHTML='<p><strong>Error:</strong> '+esc(p.get('error'))+'</p><p>'+esc(p.get('error_description')||'')+'</p>';}
+else if(p.get('code')){o.innerHTML='<p>Authorization code (single use, expires quickly):</p><code>'+esc(p.get('code'))+'</code><p>State: '+esc(p.get('state')||'')+'</p><p>Scopes: '+esc(p.get('scopes')||'')+'</p>';history.replaceState(null,'',location.pathname);}
+</script>
+</body></html>
